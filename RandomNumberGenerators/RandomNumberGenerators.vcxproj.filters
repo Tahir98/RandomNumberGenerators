@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Log">
+      <UniqueIdentifier>{7E912FA9-EA70-AE44-F388-391B5FE714A6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RandomNumberGenerators.h" />
+    <ClInclude Include="src\AddWithCarry.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LaggedFibonacciGenerator.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LehmerGenerator.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LehmerGenerator64.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\LinearCongruentialGenerator.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Log\Log.h">
+      <Filter>src\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MersenneTwister.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MiddleSquareMethod.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Xorshift.h" />
+    <ClInclude Include="src\Xorshift64.h" />
+    <ClInclude Include="src\Utility\BitConverter.h" />
+    <ClInclude Include="src\MersenneTwister64.h" />
+    <ClInclude Include="src\LaggedFibonacciGenerator64.h" />
+    <ClInclude Include="src\Random.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Log\Log.cpp">
+      <Filter>src\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Utility\BitConverter.cpp" />
+    <ClCompile Include="src\MultiplyWithCarry.h" />
+  </ItemGroup>
+</Project>
