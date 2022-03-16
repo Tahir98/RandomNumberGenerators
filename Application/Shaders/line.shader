@@ -9,10 +9,13 @@ uniform vec3 camPos;
 uniform mat4 view;
 uniform mat4 projection;
 
+out vec3 pos;
+
 void main() {
 	gl_Position = vec4(vPos, 1) * view * projection;
 	float distance = length(camPos - vPos);
-	if (distance > 200)
+	gl_Position.z -= 0.0001f;
+	if (distance > 100)
 		gl_Position.z = gl_Position.w + 1;
 }
 

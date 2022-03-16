@@ -105,7 +105,7 @@ public:
         camera(70, 9.0f / 16.0f, 0.1f, 2000) {
        
         material.ambient = { 0.3f,0.3f,0.3f };
-        material.diffuse = { 0.5f,0.5f,0.5f };
+        material.diffuse = { 1.0f,1.0f,1.0f };
         material.specular = { 0.7f,0.7f,0.7f };
 
         light.direction = { -1,-1,0 };
@@ -334,10 +334,10 @@ public:
         glViewport(0, 0, (GLsizei)fbSize.x, (GLsizei)fbSize.y);
         glDepthFunc(GL_LEQUAL);
         glEnable(GL_DEPTH_TEST);
-        glLineWidth(1.5f);
+        glLineWidth(1.2f);
         glEnable(GL_CULL_FACE);
 
-        //skybox->draw(camera);
+        skybox->draw(camera);
 
         if (drawTriangles) {
             shader2->bind();
@@ -359,6 +359,7 @@ public:
 
             shader2->setUniformMatrix4fv("view", 1, true, camera.getViewMatrix());
             shader2->setUniformMatrix4fv("projection", 1, true, camera.getProjectionMatrix());
+            glEnable(GL_BLEND);
 
             glDrawElements(GL_TRIANGLES, (uint32_t)tIndices.size(), GL_UNSIGNED_INT, 0);
         }
@@ -371,6 +372,8 @@ public:
             shader1->setUniformMatrix4fv("view", 1, true, camera.getViewMatrix());
             shader1->setUniformMatrix4fv("projection", 1, true, camera.getProjectionMatrix());
             shader1->setUniform3f("camPos", camera.getPosition().x, camera.getPosition().y, camera.getPosition().z);
+
+            glDisable(GL_BLEND);
 
             glDrawElements(GL_LINES, (uint32_t)lIndices.size(), GL_UNSIGNED_INT, 0);
         }
@@ -415,7 +418,7 @@ public:
 
         auto& layer = layers[selected_layer];
 
-        ImGui::SliderFloat("Scale", (float*)&layer.scale, 0, layer.scaleMax);
+        ImGui::SliderFloat("Scale", (float*)&layer.scale, 0, size / (float)std::pow(2.0f,layer.gradientSize) );
        
         const char* g_size[] = {
             "2x2", "4x4",
@@ -494,7 +497,7 @@ public:
         if(ImGui::Button("Add Layer")) {
             layers.push_back(PerlinNoiseLayer());
             layerNames.push_back("Layer " + std::to_string(layers.size()));
-            layers[layers.size() - 1].scaleMax = 256.0f / ((float)std::pow(2, layers.size() - 1));
+            layers[layers.size() - 1].scaleMax = size / ((float)std::pow(2, layers[layers.size() - 1].gradientSize - 1));
             selected_layer = layers.size() - 1;
         }
 

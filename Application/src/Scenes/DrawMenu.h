@@ -2,7 +2,6 @@
 #include "imgui.h"
 #include "GLFW/glfw3.h"
 #include "Scene/SceneManager.h"
-#pragma once
 #include "Scenes/DrawMenu.h"
 #include "Scenes/Performance.h"
 #include "Scenes/RNGs.h"
@@ -122,38 +121,6 @@ public:
 			}
 
 			ImGui::EndMenuBar();
-
-			/*ImGui::Begin("Colors");
-			ImGuiStyle *ref = &(ImGui::GetStyle());
-
-			static ImGuiTextFilter filter;
-			filter.Draw("Filter colors", ImGui::GetFontSize() * 16);
-
-			static ImGuiColorEditFlags alpha_flags = 0;
-			if (ImGui::RadioButton("Opaque", alpha_flags == ImGuiColorEditFlags_None)) { alpha_flags = ImGuiColorEditFlags_None; } ImGui::SameLine();
-			if (ImGui::RadioButton("Alpha", alpha_flags == ImGuiColorEditFlags_AlphaPreview)) { alpha_flags = ImGuiColorEditFlags_AlphaPreview; } ImGui::SameLine();
-			if (ImGui::RadioButton("Both", alpha_flags == ImGuiColorEditFlags_AlphaPreviewHalf)) { alpha_flags = ImGuiColorEditFlags_AlphaPreviewHalf; } ImGui::SameLine();
-
-			for (int i = 0; i < ImGuiCol_COUNT; i++)
-			{
-				const char* name = ImGui::GetStyleColorName(i);
-				if (!filter.PassFilter(name))
-					continue;
-				ImGui::PushID(i);
-				ImGui::ColorEdit4("##color", (float*)&style.Colors[i], ImGuiColorEditFlags_AlphaBar | alpha_flags);
-				if (memcmp(&style.Colors[i], &ref->Colors[i], sizeof(ImVec4)) != 0)
-				{
-					// Tips: in a real user application, you may want to merge and use an icon font into the main font,
-					// so instead of "Save"/"Revert" you'd use icons!
-					// Read the FAQ and docs/FONTS.md about using icon fonts. It's really easy and super convenient!
-					ImGui::SameLine(0.0f, style.ItemInnerSpacing.x); if (ImGui::Button("Save")) { ref->Colors[i] = style.Colors[i]; }
-					ImGui::SameLine(0.0f, style.ItemInnerSpacing.x); if (ImGui::Button("Revert")) { style.Colors[i] = ref->Colors[i]; }
-				}
-				ImGui::SameLine(0.0f, style.ItemInnerSpacing.x);
-				ImGui::TextUnformatted(name);
-				ImGui::PopID();
-			}
-			ImGui::End();*/
 		}
 
 	}

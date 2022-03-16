@@ -25,10 +25,10 @@ int main() {
 
 	APP_LOG_INFO("glfw initialized successfully");
 
-	Window::properties.width = 1600;
-	Window::properties.height = 900;
+	Window::properties.width = 1920;
+	Window::properties.height = 1080;
 	Window::properties.name = "Random Number Generators";
-	Window::properties.fullscreen = false;
+	Window::properties.fullscreen = true;
 	Window::properties.vsync = true;
 	Window::properties.setFps = false;
 
@@ -55,8 +55,8 @@ int main() {
 	float delta;
 
 	//SceneManager::push(new PerformanceScene("Deneme",window));
-	SceneManager::push(new RNG("RNG", window));
-	//SceneManager::push(new TerrainGeneration("First Example", window));
+	//SceneManager::push(new RNG("RNG", window));
+	SceneManager::push(new TerrainGeneration("First Example", window));
 	//SceneManager::push(new Cryptography("Cryptography", window));
 	//SceneManager::push(new Distribution("Cryptography", window));
 

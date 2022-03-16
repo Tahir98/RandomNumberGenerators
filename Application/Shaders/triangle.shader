@@ -63,6 +63,39 @@ void main() {
 
 	float att = light.intensity;
 
-	//Output color
-	oColor = vec4(ambient + vec3(diffuse + specular) * att, 1.0f);
+	float n = dot(norm, vec3(0, 1, 0));
+
+	if (pos.y < 55.0f) {
+		if (n >= 0.85f) {
+			oColor = vec4(0, 1, 0, 1);
+		}
+		else if (n < 0.85f && n >= 0.75f) {
+			oColor = vec4(0, 0, 0, 0);
+			oColor += vec4(vec3(1, 1, 0) * (0.85f - n) * 10.0f, 0.5f);
+			oColor += vec4(vec3(0, 1, 0) * (n - 0.75f) * 10.0f, 0.5f);
+		}
+		else {
+			oColor = vec4(1, 1, 0, 1);
+		}
+		
+
+		if (pos.y >= 35) {
+			vec4 color;
+			color = oColor * ((55.0f - pos.y) / 20.0f);
+			color += vec4(1,1,1,1) * ((pos.y - 35.0f) / 20.0f);
+
+			oColor = color;
+		}
+
+		//Output color
+		oColor.w = 1.0f;
+		oColor = vec4(ambient + vec3(diffuse + specular) * att, 1.0f) * oColor;
+	}
+	else {
+		oColor = vec4(1, 1, 1, 1) * vec4(ambient + vec3(diffuse + specular) * att, 1.0f);
+	}
+
+	
+	
+
 }
